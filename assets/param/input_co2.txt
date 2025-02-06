@@ -1,0 +1,33 @@
+co2_test
+295
+65
+0.39021
+0.0
+13.1
+27.25
+1
+0
+80000
+10
+10
+10
+1.0
+25
+20
+
+%name
+%Temp
+%Jmax
+%B(cm^-1)
+%D (centrifugual distortion)
+%alpha_xx (bohr^3)
+%alpha_zz (bohr^3)
+%geven
+%godd
+%Tfree1 (fs)
+%Tfree2 (fs)
+%tau3   (fs)
+%Tfree3 (fs)
+%I03 (W/cm^2)
+%field points
+%stepsize (fs)

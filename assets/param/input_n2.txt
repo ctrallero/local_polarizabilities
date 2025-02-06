@@ -1,0 +1,33 @@
+n2_test
+298
+65
+1.9895
+0.0
+9.8
+15
+0.6667
+0.3333
+9000
+10
+10
+10
+0.0
+25
+20
+
+%name
+%Temp
+%Jmax
+%B(cm^-1)
+%D (centrifugual distortion)
+%alpha_xx (bohr^3)
+%alpha_zz (bohr^3)
+%geven
+%godd
+%Tfree1 (fs)
+%Tfree2 (fs)
+%tau3   (fs)
+%Tfree3 (fs)
+%I03 (W/cm^2)
+%field points
+%stepsize (fs)
