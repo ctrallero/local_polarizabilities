@@ -42,6 +42,11 @@ def alignlinearD_DSIC(molecule_dictionary):
     stepfree = molecule_dictionary['stepfree']  # Free evolution step size (unit: fs)
     alphaper = molecule_dictionary['alphaper']  # Perpendicular polarizability (unit: Bohr^3)
     alphapar = molecule_dictionary['alphapar']  # Parallel polarizability (unit: Bohr^3)
+    ################################################
+    ################################################
+    lambda_dsic = molecule_dictionary['lambda_dsic']  # Dipole self-interaction coupling constant
+    ################################################
+    ################################################
 
     ## Convert to atomic units (a.u.)
     lambda_ = 0.8  # Laser wavelength (unit: μm)
@@ -70,11 +75,6 @@ def alignlinearD_DSIC(molecule_dictionary):
     stepfree = stepfree * 10 ** - 15 / (2.418884326505 * 10 ** - 17)  # Free evolution step size converted to atomic units
     # Tsep = Tsep * 10^-15 / (2.41888 * 10^-17);  # Commented code, possibly for other time unit conversions
 
-    ################################################
-    ################################################
-    lambda_dsic = 0.05  # Dipole self-interaction coupling constant
-    ################################################
-    ################################################
 
     pulsed = np.zeros(3)  # Array for pulse widths
     pulsed[1 - 1] = pulsed1  # First pulse width
@@ -295,6 +295,7 @@ def alignlinearD_DSIC(molecule_dictionary):
 #     'alphapar': 15,  # Parallel polarizability (unit: Bohr^3)
 #     'reneven': 0.6667,  # Weight for even J states
 #     'renodd': 0.3333,  # Weight for odd J states
+#     'lambda_dsic':0.05, # local polarizability correction term
 #     'tau': 80,  # First pulse width (unit: fs)
 #     'I': 20,  # Peak intensity of the first pulse (unit: TW/cm^2)
 #     'tau2': 50,  # Second pulse width (unit: fs)
@@ -308,53 +309,55 @@ def alignlinearD_DSIC(molecule_dictionary):
 #     'stepfree': 20  # Free evolution step size (unit: fs)
 # }
 
-# # Molecule parameter dictionary in the file (N2)
-# molecule_dictionary = {
-#     'molecule_name': 'n2_test',
-#     'T': 298,  # Temperature (unit: K)
-#     'Jmax': 65,  # Maximum J value
-#     'B': 1.9895,  # Rotational constant (unit: cm^-1)
-#     'centrifugal': 0.0,  # Centrifugal distortion constant
-#     'alphaper': 9.8,  # Perpendicular polarizability (unit: Bohr^3)
-#     'alphapar': 15,  # Parallel polarizability (unit: Bohr^3)
-#     'reneven': 0.6667,  # Weight for even J states
-#     'renodd': 0.3333,  # Weight for odd J states
-#     'tau': 50,  # First pulse width (unit: fs)
-#     'I': 3,  # Peak intensity of the first pulse (unit: TW/cm^2)
-#     'tau2': 50,  # Second pulse width (unit: fs)
-#     'I02': 3,  # Peak intensity of the second pulse (unit: TW/cm^2)
-#     'Tfree1': 9000,  # Free evolution time after the first pulse (unit: fs)
-#     'Tfree2': 10,  # Free evolution time after the second pulse (unit: fs)
-#     'tau3': 10,  # Third pulse width (unit: fs)
-#     'Tfree3': 10,  # Free evolution time after the third pulse (unit: fs)
-#     'I03': 0.0,  # Peak intensity of the third pulse (unit: W/cm^2)
-#     'NOPlaser': 25,  # Number of time points in the laser field
-#     'stepfree': 20  # Free evolution step size (unit: fs)
-# }
-
-# # Molecule parameter dictionary in the file (CO2)
+# Molecule parameter dictionary in the file (N2)
 molecule_dictionary = {
-    'molecule_name': 'co2_test',
-    'T': 295,  # Temperature (unit: K)
+    'molecule_name': 'n2_test',
+    'T': 298,  # Temperature (unit: K)
     'Jmax': 65,  # Maximum J value
-    'B': 0.39021,  # Rotational constant (unit: cm^-1)
+    'B': 1.9895,  # Rotational constant (unit: cm^-1)
     'centrifugal': 0.0,  # Centrifugal distortion constant
-    'alphaper': 13.1,  # Perpendicular polarizability (unit: Bohr^3)
-    'alphapar': 27.25,  # Parallel polarizability (unit: Bohr^3)
-    'reneven': 1,  # Weight for even J states
-    'renodd': 0,  # Weight for odd J states
+    'alphaper': 9.8,  # Perpendicular polarizability (unit: Bohr^3)
+    'alphapar': 15,  # Parallel polarizability (unit: Bohr^3)
+    'reneven': 0.6667,  # Weight for even J states
+    'renodd': 0.3333,  # Weight for odd J states
+    'lambda_dsic':0.05, # local polarizability correction term
     'tau': 50,  # First pulse width (unit: fs)
     'I': 3,  # Peak intensity of the first pulse (unit: TW/cm^2)
     'tau2': 50,  # Second pulse width (unit: fs)
     'I02': 3,  # Peak intensity of the second pulse (unit: TW/cm^2)
-    'Tfree1': 80000,  # Free evolution time after the first pulse (unit: fs)
+    'Tfree1': 9000,  # Free evolution time after the first pulse (unit: fs)
     'Tfree2': 10,  # Free evolution time after the second pulse (unit: fs)
     'tau3': 10,  # Third pulse width (unit: fs)
     'Tfree3': 10,  # Free evolution time after the third pulse (unit: fs)
-    'I03': 1.0,  # Peak intensity of the third pulse (unit: W/cm^2)
+    'I03': 0.0,  # Peak intensity of the third pulse (unit: W/cm^2)
     'NOPlaser': 25,  # Number of time points in the laser field
     'stepfree': 20  # Free evolution step size (unit: fs)
 }
+
+# # Molecule parameter dictionary in the file (CO2)
+# molecule_dictionary = {
+#     'molecule_name': 'co2_test',
+#     'T': 295,  # Temperature (unit: K)
+#     'Jmax': 65,  # Maximum J value
+#     'B': 0.39021,  # Rotational constant (unit: cm^-1)
+#     'centrifugal': 0.0,  # Centrifugal distortion constant
+#     'alphaper': 13.1,  # Perpendicular polarizability (unit: Bohr^3)
+#     'alphapar': 27.25,  # Parallel polarizability (unit: Bohr^3)
+#     'reneven': 1,  # Weight for even J states
+#     'renodd': 0,  # Weight for odd J states
+#     'lambda_dsic':0.05, # local polarizability correction term
+#     'tau': 50,  # First pulse width (unit: fs)
+#     'I': 3,  # Peak intensity of the first pulse (unit: TW/cm^2)
+#     'tau2': 50,  # Second pulse width (unit: fs)
+#     'I02': 3,  # Peak intensity of the second pulse (unit: TW/cm^2)
+#     'Tfree1': 80000,  # Free evolution time after the first pulse (unit: fs)
+#     'Tfree2': 10,  # Free evolution time after the second pulse (unit: fs)
+#     'tau3': 10,  # Third pulse width (unit: fs)
+#     'Tfree3': 10,  # Free evolution time after the third pulse (unit: fs)
+#     'I03': 1.0,  # Peak intensity of the third pulse (unit: W/cm^2)
+#     'NOPlaser': 25,  # Number of time points in the laser field
+#     'stepfree': 20  # Free evolution step size (unit: fs)
+# }
 
 # Run the main function
 cos2theta_original, D2, D4, D6, D8, time1, Eout, symm, mol_name = alignlinearD(molecule_dictionary)
